@@ -9,8 +9,8 @@ const Home = () => {
   const {state} = useContextGlobalStates();
 
   return (
-    <main className={state.theme === 'dark' ? 'dark' : 'light'}>
-      <h1>Home</h1>
+    <main className={`p-4 ${state.theme === 'dark' ? 'dark' : 'light'}`}>
+      <h1 className='text-[blue] pb-3 text-[20px]'>Home</h1>
       <div className='card-grid'>
         {state.data.map((dentista) =>( 
           <Card 
@@ -18,6 +18,7 @@ const Home = () => {
           username={dentista.username}
           id={dentista.id}
           key={dentista.id}
+          isFavorite={false}
           />
 
         ))}

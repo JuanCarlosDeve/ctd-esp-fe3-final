@@ -12,10 +12,9 @@ import { routes } from "./Components/utils/routers"
 function App() {
   return (
     <>
-      <div className="App">
+      <div className="app ">
         <Navbar />
         <Routes>
-
           <Route path={routes.home} element={<Home />} />
           <Route path={routes.contact} element={<Contact />} />
           <Route path="detail/:id" element={<Detail />} />
