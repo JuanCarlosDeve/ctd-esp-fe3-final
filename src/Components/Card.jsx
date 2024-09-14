@@ -1,20 +1,36 @@
 import React from "react";
+import { Link } from "react-router-dom"
+import toast from 'react-hot-toast';
 
 
 const Card = ({ name, username, id }) => {
 
-  const addFav = ()=>{
-    // Aqui iria la logica para agregar la Card en el localStorage
-  }
+  const addFav = () => {
+    const favs = JSON.parse(localStorage.getItem("favs")) || [];
+
+    const isAlreadyFav = favs.some((fav) => fav.id === id);
+    if (!isAlreadyFav) {
+
+      const newFavs = [...favs, { name, username, id }];
+
+      localStorage.setItem("favs", JSON.stringify(newFavs));
+      toast.success('Dentista añadido a favoritos');
+    } else {
+      toast.error('Este dentista ya esta agregado')
+    }
+  };
 
   return (
     <div className="card">
-        {/* En cada card deberan mostrar en name - username y el id */}
+      <picture>
+        <img className="img-card" src="/images/doctor.jpg" alt="img-doctor" />
+      </picture>
+      <h2>{name}</h2>
+      <p>{username}</p>
+      <p>ID: {id}</p>
+      <Link key={id} to={`/detail/${id}`}>Ver Detalles</Link>
 
-        {/* No debes olvidar que la Card a su vez servira como Link hacia la pagina de detalle */}
-
-        {/* Ademas deberan integrar la logica para guardar cada Card en el localStorage */}
-        <button onClick={addFav} className="favButton">Add fav</button>
+      <button onClick={addFav} className="favButton">Agregar a favoritos</button>
     </div>
   );
 };

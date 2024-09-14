@@ -80,11 +80,16 @@ form{
   border: 0.5px solid rgb(136, 136, 136);
 }
 
+.img-card{
+  width: 140px;
+  object-fit: contain;
+}
+
 .card:hover{
   border: 0.5px solid rgb(206, 217, 142);
 }
 
-.card-grid{
+/* .card-grid{
   display: flex;
   justify-content: space-evenly;
   gap: 1rem;
@@ -92,7 +97,14 @@ form{
   height: auto;
   flex-wrap: wrap;
   margin: 0 auto;
+} */
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
 }
+
 
 table {
  border-collapse: collapse;
@@ -119,4 +131,9 @@ tr:nth-child(even) {
 }
 .dark > a {
   color: white;
+}
+
+.light {
+  background-color: white;
+  color: black;
 }
